@@ -70,6 +70,10 @@ const InstallPage = (props: {
   }
 
   useEffect(() => {
+    console.log(pageState + " current state");
+  }, [pageState]);
+
+  useEffect(() => {
     if (pageState === "button") {
       getGameFiles();
     }
@@ -89,7 +93,10 @@ const InstallPage = (props: {
 
   async function getPatches() {
     try {
-      const response = await invoke("get_patches");
+      const key = import.meta.env.VITE_CDN_KEY;
+      const response = await invoke("get_patches", {
+        accessKey: key,
+      });
       const patches: Patch[] = JSON.parse(response as any);
       let toDownload: { fileName: string; filePath: string }[] = [];
       await Promise.all(
@@ -118,7 +125,7 @@ const InstallPage = (props: {
   }
 
   async function downloadFiles() {
-    const downloadEndpoint = "https://echopatches.b-cdn.net/";
+    const downloadEndpoint = import.meta.env.VITE_FILESERVER;
     const destinations: string[] = [];
     const urls: string[] = [];
     console.log(dlArray);
@@ -181,20 +188,20 @@ const InstallPage = (props: {
       )}
       {pageState === "play" && (
         <div>
-          <button
-            className="actionbutton"
-            onClick={() => startGame()}
-          >
+          <button className="actionbutton" onClick={() => startGame()}>
             Play
           </button>
           <div className="settings">
-            <button className='subaction' onClick={() => {
-              setPageState("button");
-              getGameFiles();
-            }}>
+            <button
+              className="subaction"
+              onClick={() => {
+                setPageState("progress");
+                getGameFiles();
+              }}
+            >
               force update
             </button>
-            </div>
+          </div>
         </div>
       )}
       {pageState === "update" && <Loader2 className="animate-spin" />}

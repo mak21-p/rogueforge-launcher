@@ -1,6 +1,6 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use std::{panic, path::Path, process::Command, time::Instant};
+use std::{env, panic, path::Path, process::Command, time::Instant};
 
 use log::{error, info};
 use reqwest::Client;
@@ -200,12 +200,12 @@ fn open_app(path: String) -> Result<String, String> {
 }
 
 #[tauri::command]
-async fn get_patches() -> Result<String, String> {
+async fn get_patches(access_key: String) -> Result<String, String> {
     info!("getting all patches available");
     let client = Client::new();
     let body = client
         .get("https://ny.storage.bunnycdn.com/echos-patches/")
-        .header("AccessKey", "0105dae2-598c-4178-b327b29f833d-9239-4944")
+        .header("AccessKey", &access_key.to_string())
         .send()
         .await
         .map_err(|err| {
