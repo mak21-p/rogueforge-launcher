@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { listen } from "@tauri-apps/api/event";
 import { invoke } from "@tauri-apps/api/tauri";
-import { Loader2, RefreshCcw } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import { fileList } from "@/types/fileList";
 import { InstallState } from "@/types/installState.type";
@@ -166,7 +166,7 @@ const InstallPage = (props: {
   }
 
   return (
-    <div className="flex w-full flex-col items-center">
+    <div>
       {dlArray.length > 0 && pageState === "button" && (
         <Button
           className="w-[60%] bg-zinc-900 text-white hover:bg-zinc-800 hover:text-white"
@@ -180,21 +180,21 @@ const InstallPage = (props: {
         <Progress className="w-[60%] bg-zinc-900" value={progress} />
       )}
       {pageState === "play" && (
-        <div className="flex w-full items-center justify-center gap-5">
-          <Button
-            className="w-[20%] bg-zinc-900 text-white hover:bg-zinc-800 hover:text-white"
-            size={"lg"}
+        <div>
+          <button
+            className="actionbutton"
             onClick={() => startGame()}
           >
             Play
-          </Button>
-          <RefreshCcw
-            onClick={() => {
+          </button>
+          <div className="settings">
+            <button className='subaction' onClick={() => {
               setPageState("button");
               getGameFiles();
-            }}
-            className="cursor-pointer"
-          />
+            }}>
+              force update
+            </button>
+            </div>
         </div>
       )}
       {pageState === "update" && <Loader2 className="animate-spin" />}

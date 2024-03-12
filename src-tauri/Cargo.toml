@@ -1,5 +1,5 @@
 [package]
-name = "echoes-launcher-2"
+name = "Rogueforge-Launcher"
 version = "0.1.0"
 description = "A Tauri App"
 authors = ["you"]

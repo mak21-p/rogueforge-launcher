@@ -1,7 +1,6 @@
 import { open } from "@tauri-apps/api/dialog"
 
 import { InstallState } from "@/types/installState.type"
-import { Button } from "@/components/ui/button"
 
 const BrowsePage = (props: {
   setInstallState: React.Dispatch<React.SetStateAction<InstallState>>
@@ -16,13 +15,12 @@ const BrowsePage = (props: {
   }
   return (
     <div>
-      <Button
-        className="bg-zinc-900 text-white hover:bg-zinc-800 hover:text-white"
-        size={"lg"}
+      <button
+        className="actionbutton"
         onClick={() => locateWow()}
       >
         Locate Game
-      </Button>
+      </button>
     </div>
   )
 }

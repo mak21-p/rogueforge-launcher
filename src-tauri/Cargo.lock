@@ -3,6 +3,21 @@
 version = 3
 
 [[package]]
+name = "Rogueforge-Launcher"
+version = "0.1.0"
+dependencies = [
+ "hex",
+ "log",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "sha2",
+ "tauri",
+ "tauri-build",
+ "tokio",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -602,21 +617,6 @@ name = "dunce"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "56ce8c6da7551ec6c462cbaf3bfbc75131ebbfa1c944aeaa9dab51ca1c5f0c3b"
-
-[[package]]
-name = "echoes-launcher-2"
-version = "0.1.0"
-dependencies = [
- "hex",
- "log",
- "reqwest",
- "serde",
- "serde_json",
- "sha2",
- "tauri",
- "tauri-build",
- "tokio",
-]
 
 [[package]]
 name = "embed-resource"

@@ -10,6 +10,18 @@ export default function DashboardPage() {
     InstallState.LOCATE
   )
 
+  async function openDiscord() {
+    openurl('https://discord.gg/akWECFMv');
+  }
+
+  async function openRoadmap() {
+    openurl('https://discord.com/channels/1216537984795676692/1216540357823565874');
+  }
+
+  async function openurl(url: string) {
+    window.open(url, '_blank')!.focus;
+  }
+
   useEffect(() => {
     const gameDir = localStorage.getItem("gameDir")
 
@@ -19,16 +31,19 @@ export default function DashboardPage() {
   }, [])
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-10">
-      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-        Echoes WoW
-      </h1>
-      {installState === InstallState.LOCATE && (
-        <BrowsePage setInstallState={setInstallState} />
-      )}
-      {installState === InstallState.INSTALL && (
-        <InstallPage setInstallState={setInstallState} />
-      )}
+    <div className="flex h-full w-full flex-col gap-10">
+      <div className='menubar'>
+        <button className='menubutton' onClick={openDiscord}>discord</button>
+        <button className='menubutton' onClick={openRoadmap}>roadmap</button>
+      </div>
+      <div className="actions">
+        {installState === InstallState.LOCATE && (
+          <BrowsePage setInstallState={setInstallState} />
+        )}
+        {installState === InstallState.INSTALL && (
+          <InstallPage setInstallState={setInstallState} />
+        )}
+        </div>
     </div>
   )
 }

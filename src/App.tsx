@@ -5,12 +5,12 @@ import DashboardPage from "./pages/page";
 
 function App() {
   return (
-    <div className="h-screen overflow-clip">
+    <div className="h-screen overflow-clipcontainer">
       <Toaster />
       {/* <Menu /> */}
       <div
         className={cn(
-          "h-screen overflow-auto border-t bg-background pb-8",
+          "h-screen overflow-auto bg-background pb-8",
           // "scrollbar-none"
           "scrollbar scrollbar-track-transparent scrollbar-thumb-accent scrollbar-thumb-rounded-md"
         )}

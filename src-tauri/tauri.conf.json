@@ -7,7 +7,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "echoes-launcher-2",
+    "productName": "Rogueforge Launcher",
     "version": "0.0.0"
   },
   "tauri": {
@@ -29,9 +29,12 @@
 
     "windows": [
       {
-        "title": "echoes-launcher-2",
-        "width": 800,
-        "height": 600
+        "title": "Rogueforge Launcher",
+        "width": 500,
+        "height": 150,
+        "minimizable": true,
+        "maximizable": false,
+        "resizable": false
       }
     ],
     "security": {

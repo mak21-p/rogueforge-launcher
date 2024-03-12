@@ -4,8 +4,13 @@
 
 @layer base {
   :root {
-    --background: rgb(9 9 11);
-    --foreground: #fff;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    --background: #2f2f2f;
+    --foreground: #f6f6f6;
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -33,6 +38,11 @@
     --ring: 240 10% 3.9%;
 
     --radius: 0.5rem;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
   }
 
   .dark {
@@ -63,6 +73,58 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+  }
+
+  .menubar {
+    margin: 0;
+    display: inline-flexbox;
+    flex-direction: row;
+    justify-content: center;
+    text-align: right;
+  }
+
+  .menubutton {
+    font-size: 12px; 
+    padding: 0.6em 1.2em;
+    margin: 4px;
+  }
+
+  input,
+  button {
+    cursor: pointer;
+    transition: .75s;
+    border: none;
+    text-align: left;
+    background: transparent;
+    opacity: 70%;
+    font-family: inherit;
+    color: #f6f6f6;
+  }
+
+  button:hover {
+    opacity: 100%;
+    filter: drop-shadow(0 0 .8em white);
+  }
+
+  .actions {
+    display: flex;
+    bottom: 5vh;
+    position: absolute;
+    padding: 8vh;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+  }
+
+  .actionbutton {
+    font-size: 3em;
+    text-align: left;
+  }
+
+  .subaction {
+    font-size: .8em;
+    padding: 5vh .7vw;
+    text-align: left;
   }
 }
 
