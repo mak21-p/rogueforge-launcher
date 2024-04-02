@@ -26,6 +26,11 @@ export default function DashboardPage() {
     window.open(url, "_blank")!.focus;
   }
 
+  function resetLocation() {
+    localStorage.clear();
+    setInstallState(InstallState.LOCATE);
+  }
+
   async function showVersion() {
     const ver = await getVersion();
     setAppVersion(ver);
@@ -43,6 +48,9 @@ export default function DashboardPage() {
   return (
     <div className="flex h-full w-full flex-col gap-10">
       <div className="menubar">
+        <button className="menubutton" onClick={resetLocation}>
+          reset install location
+        </button>
         <button className="menubutton" onClick={openDiscord}>
           discord
         </button>
